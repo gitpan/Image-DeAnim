@@ -8,7 +8,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(gif);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 sub gif {
     my $nullstr     = "";
@@ -75,7 +75,7 @@ sub gif {
         } elsif ($ext_label eq "\xfe") { # comment extension; skip
             &get_data_block;
         } elsif ($ext_label eq "\x01") { # plain text extension; skip
-            &safe_read(12);
+            &safe_read(13);
             &get_data_block;
         } else {
             warn "Illegal extension label found: " . ord($ext_label);
@@ -193,7 +193,7 @@ step.
 
 =head1 AUTHOR
 
-Ken MacFarlane, <ksm+cpan@sas.upenn.edu>
+Ken MacFarlane, <ksm+cpan@universal.dca.net>
 
 =head1 COPYRIGHT
 
